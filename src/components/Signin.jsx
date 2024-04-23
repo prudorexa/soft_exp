@@ -4,7 +4,7 @@ function Signin() {
         onSuccess: tokenResponse => console.log(tokenResponse),
     });
     return (
-        <button onClick={() => login()} style={{background:"gray",color:"white",padding:"10px"}}>Sign in with Google {''}</button>
+        <button className='align-center mx-5 mb-9 mt-8 'onClick={() => login()} style={{background:"gray",color:"white",padding:"10px"}}>Sign in with Google {''}</button>
     );
 }
 

@@ -98,8 +98,8 @@ const ExpenseTracker = () => {
       <h1 className="text-3xl font-bold text-center text-red-500 mb-7">Expense Tracker</h1>
       <div className="balance">
         <p className="text-2xl font-bold text-center text-gray-800 mb-2">Balance: ${balance}</p>
-        <p className="text-2x1 font-bold text-center text-gray-800 mb-2">Total Salary: ${totalSalary}</p>
       </div>
+
       <form onSubmit={(e) => e.preventDefault() || handleAddExpense()}>
 
         <div className="mb-2">
@@ -139,14 +139,21 @@ const ExpenseTracker = () => {
         <td className="py-2 px-5 text-lg font-bold">{expense.category}</td>
         <td className="py-2 px-5 text-lg font-bold">{expense.name}</td>
         <td className="py-2 px-5 text-lg font-bold">${expense.amount}</td>
+        
         <td className="py-2 px-5 text-lg font-bold">
-          <button onClick={()=> deleteExpense(character.id)} className='font-serif text-center bg-blue-500 mt-5 ml-2 p-2 px-8 text-gray-100 hover:text-gray-300 border border-gray-300 rounded-lg '>Delete </button>
+          
+          <button onClick={()=> deleteExpense(character.id)} className='font-serif text-center bg-blue-500 mt-1 ml-1 p-2 px-3 text-gray-100 hover:text-gray-300 border border-gray-300 rounded-lg '>Delete </button>
         </td>
       </tr>
     ))}
-  </tbody>
+  </tbody >
+
 </table>
+<canvas ref={chartRef} />
+
+
     </div>
+    
   );
 };
 

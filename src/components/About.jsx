@@ -13,6 +13,7 @@ const About = () => {
       <p className="text-lg text-gray-800">
         Thank you for choosing our expense tracker app. We hope it helps you achieve your financial goals!
       </p>
+      <img src="src/assets/istockphoto-1806905453-1024x1024.jpg" alt="width-100%" />
     </div>
   );
 };
