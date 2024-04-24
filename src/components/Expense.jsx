@@ -82,7 +82,6 @@ const ExpenseTracker = () => {
     setNewExpense({ name: '', amount: 0, category: '' });
     setBalance(balance - newExpense.amount);
 
-    
     const totalAmount = expenses.reduce((total, expense) => total + Number(expense.amount), 0);
     setTotal(totalAmount);
 
@@ -107,7 +106,6 @@ const ExpenseTracker = () => {
     };
   }
 
-  const totalSalary = expenses.reduce((total, expense) => total + expense.amount, 0);
 
   return (
     <div className="bg-gray-100 p-8 rounded-lg shadow-md">
