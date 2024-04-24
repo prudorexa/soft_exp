@@ -13,7 +13,7 @@ const ExpenseTracker = () => {
   const [newExpense, setNewExpense] = useState({ name: '', amount: 0, category: '' });
   const [balance, setBalance] = useState(0);
   const [total, setTotal] = useState(0);
-  const [salary, setSalary] = useState(0);
+  const [salary, setSalary] = useState(100000); // Set initial salary to $1,000,000
  
   const chartRef = useRef(null);
   
@@ -80,14 +80,24 @@ const ExpenseTracker = () => {
     const newExpenses = [...expenses, { id: Date.now(), ...newExpense }];
     setExpenses(newExpenses);
     setNewExpense({ name: '', amount: 0, category: '' });
-    setBalance(balance - newExpense.amount);
+
+    // setBalance(balance - newExpense.amount);
+   
 
     const totalAmount = expenses.reduce((total, expense) => total + Number(expense.amount), 0);
     setTotal(totalAmount);
 
+    const totalSalary = salary;
+    setSalary(totalSalary);
+
+    const remainingBalance = salary - totalAmount;
+    setBalance(remainingBalance);
+
     const deleteExpense = (id) => {
       const updatedExpenses = expenses.filter(expense => expense.id !== id);
       setExpenses(updatedExpenses);
+
+      
       const totalAmount = updatedExpenses.reduce((total, expense) => total + Number(expense.amount), 0);
       setTotal(totalAmount);
 
@@ -110,6 +120,12 @@ const ExpenseTracker = () => {
   return (
     <div className="bg-gray-100 p-8 rounded-lg shadow-md">
       <h1 className="text-3xl font-bold text-center text-red-500 mb-7">Expense Tracker</h1>
+      <div className="Salary">
+      <p className="text-2xl font-bold text-center text-gray-800 mb-2">Salary: ${salary}</p>
+
+</div>
+
+
       <div className="balance">
         <p className="text-2xl font-bold text-center text-gray-800 mb-2">Balance: ${balance}</p>
       </div>
@@ -139,6 +155,7 @@ const ExpenseTracker = () => {
             <option value="Personal">Personal</option>
           </select>
         </div>
+       
 
         <button className="bg-green-500 text-white-500 font-semibold px-2 py-2 rounded-lg hover:bg-green-500 focus:outline-white" type="submit">Add Expense</button>
       </form>
