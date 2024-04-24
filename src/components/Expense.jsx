@@ -5,7 +5,7 @@ import Chart from 'chart.js/auto';
 
 const ExpenseTracker = () => {
   const [expenses, setExpenses] = useState([
-    { id: 1, name: 'Rent', amount: 1000, category: 'housing' },
+    { id: 1, name: 'Rent', amount: 500, category: 'housing' },
     { id: 2, name: 'Groceries', amount: 200, category: 'food' },
     { id: 3, name: 'Electricity', amount: 300, category: 'utilities' },
   ]);
@@ -29,7 +29,9 @@ const ExpenseTracker = () => {
     const data = Object.values(categories);
 
     if (chartRef.current) {
+
       const ctx = chartRef.current.getContext('2d');
+
 
       new Chart(ctx, {
         type: 'bar',
@@ -68,7 +70,9 @@ const ExpenseTracker = () => {
         }
       });
     }
+
   };
+
   
 
   const handleAddExpense = () => {
@@ -77,7 +81,15 @@ const ExpenseTracker = () => {
     setNewExpense({ name: '', amount: 0, category: '' });
     setBalance(balance - newExpense.amount);
 
+
+  
+    const deleteExpense = (id) => {
+      const updatedExpenses = expenses.filter(expense => expense.id !== id);
+      setExpenses(updatedExpenses);
     
+    
+
+     
 
     const handleCategorizeExpense = (id, category) => {
       const newExpenses = expenses.map((expense) => {
@@ -90,7 +102,8 @@ const ExpenseTracker = () => {
       setExpenses(newExpenses);
 
     };
-  };
+  };}
+ 
   const totalSalary = expenses.reduce((total, expense) => total + expense.amount, 0);
 
   return (
@@ -99,6 +112,7 @@ const ExpenseTracker = () => {
       <div className="balance">
         <p className="text-2xl font-bold text-center text-gray-800 mb-2">Balance: ${balance}</p>
       </div>
+
 
       <form onSubmit={(e) => e.preventDefault() || handleAddExpense()}>
 
@@ -143,13 +157,15 @@ const ExpenseTracker = () => {
         <td className="py-2 px-5 text-lg font-bold">
           
           <button onClick={()=> deleteExpense(character.id)} className='font-serif text-center bg-blue-500 mt-1 ml-1 p-2 px-3 text-gray-100 hover:text-gray-300 border border-gray-300 rounded-lg '>Delete </button>
+
+          
         </td>
       </tr>
     ))}
   </tbody >
 
 </table>
-<canvas ref={chartRef} />
+<canvas ref={chartRef} width="400" height="200"></canvas>
 
 
     </div>
