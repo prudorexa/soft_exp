@@ -13,10 +13,10 @@ const ExpenseTracker = () => {
   const [newExpense, setNewExpense] = useState({ name: '', amount: 0, category: '' });
   const [balance, setBalance] = useState(0);
   const [total, setTotal] = useState(0);
-  const [salary, setSalary] = useState(100000); // Set initial salary to $1,000,000
- 
+  const [salary, setSalary] = useState(100000);
+
   const chartRef = useRef(null);
-  
+
 
   useEffect(() => {
     updateChart();
@@ -82,7 +82,7 @@ const ExpenseTracker = () => {
     setNewExpense({ name: '', amount: 0, category: '' });
 
     // setBalance(balance - newExpense.amount);
-   
+
 
     const totalAmount = expenses.reduce((total, expense) => total + Number(expense.amount), 0);
     setTotal(totalAmount);
@@ -93,11 +93,17 @@ const ExpenseTracker = () => {
     const remainingBalance = salary - totalAmount;
     setBalance(remainingBalance);
 
-    const deleteExpense = (id) => {
-      const updatedExpenses = expenses.filter(expense => expense.id !== id);
+    function handleDelete(id) {
+      const newExpense = expenses.filter(expense => expense.id !== index);
+      setExpenses(newExpense);
+
+
+
+      const updatedExpenses = expenses.filter(expense => expense.id !== index);
       setExpenses(updatedExpenses);
 
-      
+
+
       const totalAmount = updatedExpenses.reduce((total, expense) => total + Number(expense.amount), 0);
       setTotal(totalAmount);
 
@@ -121,9 +127,9 @@ const ExpenseTracker = () => {
     <div className="bg-gray-100 p-8 rounded-lg shadow-md">
       <h1 className="text-3xl font-bold text-center text-red-500 mb-7">Expense Tracker</h1>
       <div className="Salary">
-      <p className="text-2xl font-bold text-center text-gray-800 mb-2">Salary: ${salary}</p>
+        <p className="text-2xl font-bold text-center text-gray-800 mb-2">Salary: ${salary}</p>
 
-</div>
+      </div>
 
 
       <div className="balance">
@@ -133,6 +139,7 @@ const ExpenseTracker = () => {
 
       <form onSubmit={(e) => e.preventDefault() || handleAddExpense()}>
 
+      
         <div className="mb-2">
           <label className="block text-white-500 text-sm font-semibold mb-2" htmlFor="">Expense Name</label>
           <input placeholder="Expense Name..." className="w-full px-7 py-2 border rounded-lg bg-white-250 focus:border-blue-800" required type="text" value={newExpense.name} onChange={(e) => setNewExpense({ ...newExpense, name: e.target.value })} />
@@ -141,7 +148,7 @@ const ExpenseTracker = () => {
           <label className="block text-white-500 text-sm font-semibold mb-2" htmlFor="">Expense Amount</label>
           <input placeholder="Expense Amount..." className="w-full px-3 py-2 border rounded-lg bg-white-250 focus:border-blue-500" required type="number" value={newExpense.amount} onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })} />
         </div>
-        
+
 
         <div className="mb-2">
           <label className="block text-white-500 text-sm font-semibold mb-2" htmlFor="">Expense Category</label>
@@ -155,7 +162,7 @@ const ExpenseTracker = () => {
             <option value="Personal">Personal</option>
           </select>
         </div>
-       
+
 
         <button className="bg-green-500 text-white-500 font-semibold px-2 py-2 rounded-lg hover:bg-green-500 focus:outline-white" type="submit">Add Expense</button>
       </form>
@@ -177,7 +184,11 @@ const ExpenseTracker = () => {
 
               <td className="py-2 px-5 text-lg font-bold">
 
-              <button onClick={() => deleteExpense(expense.id)} className='font-serif text-center bg-blue-500 mt-1 ml-1 p-2 px-3 text-gray-100 hover:text-gray-300 border border-gray-300 rounded-lg'>Delete</button>
+
+
+
+
+                <button onClick={() => handleDelete(expense.id)} className='font-serif text-center bg-blue-500 mt-1 ml-1 p-2 px-3 text-gray-100 hover:text-gray-300 border border-gray-300 rounded-lg' >Delete</button>
 
               </td>
             </tr>
@@ -186,15 +197,15 @@ const ExpenseTracker = () => {
 
       </table>
       <div className="mb-2">
-          <label className="block text-white-500 py-2 px-5 text-lg font-bold text-sm font-semibold mb-2 " htmlFor="">Total Amount</label>
-          <input type="text" className="form-control py-2 px-5 text-lg font-bold " placeholder="Enter Total" required disabled
-                            value={total} />
-        </div>
-        <canvas ref={chartRef} width="400" height="200"></canvas>
+        <label className="block text-white-500 py-2 px-5 text-lg font-bold text-sm font-semibold mb-2 " htmlFor="">Total Amount</label>
+        <input type="text" className="form-control py-2 px-5 text-lg font-bold " placeholder="Enter Total" required disabled
+          value={total} />
+      </div>
+      <canvas ref={chartRef} width="400" height="200"></canvas>
 
 
     </div>
-    
+
 
   );
 };
