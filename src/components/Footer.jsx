@@ -40,19 +40,19 @@ const Footer = () => {
         <div className="md:w-3/5">
           <ul className="md:flex md:justify-end space-y-2 md:space-y-0 md:space-x-6">
             <li>
-              <a href="#" className="text-gray-300 hover:text-gray-100">Contact Us</a>
+              <a href="#" className="text-white-300 hover:text-white-100">Contact Us</a>
               <p className="text-sm text-gray-500 mt-1">Have questions or feedback? Reach out to us!</p>
             </li>
             <li>
-              <a href="#" className="text-gray-300 hover:text-gray-100">Privacy Policy</a>
+              <a href="#" className="text-white-300 hover:text-white-100">Privacy Policy</a>
               <p className="text-sm text-gray-500 mt-1">Read our privacy policy to understand how we handle your data.</p>
             </li>
             <li>
-              <a href="#" className="text-gray-300 hover:text-gray-100">Terms of Service</a>
+              <a href="#" className="text-white-300 hover:text-white-100">Terms of Service</a>
               <p className="text-sm text-gray-500 mt-1">Learn about the terms governing your use of our service.</p>
             </li>
             <li>
-              <a href="#" className="text-gray-300 hover:text-gray-100">About Us</a>
+              <a href="#" className="text-white-300 hover:text-white-100">About Us</a>
               <p className="text-sm text-gray-500 mt-1">Find out more about our company and mission.</p>
             </li>
           </ul>
