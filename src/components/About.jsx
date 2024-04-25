@@ -1,21 +1,48 @@
+
 import React from 'react';
 
-const About = () => {
+const AboutUs = () => {
   return (
-    <div className="bg-gray-100 p-8 rounded-lg shadow-md">
-      <h1 className="text-3xl font-bold text-center text-red-500 mb-7">About Us</h1>
-      <p className="text-lg text-gray-800">
-        Our expense tracker app is designed to help you keep track of your expenses and manage your finances more effectively. With our app, you can easily add and categorize your expenses, view your spending history, and set budgets to help you stay on track.
-      </p>
-      <p className="text-lg text-gray-800">
-        Our team is dedicated to providing you with the best possible experience, and we are constantly working to improve our app and add new features. If you have any questions or feedback, please don't hesitate to contact us.
-      </p>
-      <p className="text-lg text-gray-800">
-        Thank you for choosing our expense tracker app. We hope it helps you achieve your financial goals!
-      </p>
-      <img src="src/assets/istockphoto-1806905453-1024x1024.jpg" alt="width-100%" />
+    <div className="container mx-auto py-8">
+      <h1 className="text-3xl font-bold text-center mb-6">About Us</h1>
+      <p className="text-lg text-gray-700 leading-relaxed mb-8">Welcome to Expense Tracker, your personal finance assistant. Our mission is to help you manage your expenses efficiently and make smarter financial decisions.</p>
+      <h2 className="text-2xl font-bold mb-4">Meet the Team</h2>
+      <div className="flex flex-col md:flex-row items-center mb-8">
+        <img src="src/assets/prudence.jpg" alt="Team Member 1" className="w-24 h-24 rounded-full mb-4 md:mr-8 md:mb-0" />
+        <div className="flex flex-col">
+          <h3 className="text-xl font-bold mb-2">Prudence Mathu</h3>
+          <p className="text-gray-700 mb-2">Co-Founder & CEO</p>
+          <p className="text-gray-700">Prudence is passionate about personal finance and technology. With years of experience in software development, she leads our team with innovation and dedication.</p>
+        </div>
+      </div>
+      
+      <div className="flex flex-col md:flex-row items-center mb-8">
+        <img src="src/assets/diana.jpg" alt="Team Member 2" className="w-24 h-24 rounded-full mb-4 md:mr-8 md:mb-0 mt-5" />
+        <div className="flex flex-col">
+          <h3 className="text-xl font-bold mb-2">Diana Kara</h3>
+          <p className="text-gray-700 mb-2">Co-Founder & CTO</p>
+          <p className="text-gray-700">Diana is a tech enthusiast with expertise in web development and cybersecurity. She ensures our platform's security and reliability.</p>
+        </div>
+      </div>
+      <div className="flex flex-col md:flex-row items-center mb-8">
+        <img src=" src/assets/Eliud.jpg" alt="Team Member 3" className="w-24 h-24 rounded-full mb-4 md:mr-8 md:mb-0" />
+        <div className="flex flex-col">
+          <h3 className="text-xl font-bold mb-2">Eliud Muthui</h3>
+          <p className="text-gray-700 mb-2">Co-Founder & Director</p>
+          <p className="text-gray-700">Prudence is passionate about personal finance and technology. With years of experience in software development, she leads our team with innovation and dedication.</p>
+        </div>
+        </div>
+      <div className="flex flex-col md:flex-row items-center mb-8">
+        <img src="src/assets/Lydia.jpg" alt="Team Member 4" className="w-24 h-24 rounded-full mb-4 md:mr-8 md:mb-0" />
+        <div className="flex flex-col">
+          <h3 className="text-xl font-bold mb-2">Lydia Gathoni</h3>
+          <p className="text-gray-700 mb-2">Co-Founder & Producer</p>
+          <p className="text-gray-700">Lydia is passionate about personal finance and technology. With years of experience in software development, she leads our team with innovation and dedication.</p>
+        </div>
     </div>
+    </div>
+    
   );
 };
 
-export default About;
+export default AboutUs;

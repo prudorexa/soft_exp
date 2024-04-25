@@ -1,13 +1,13 @@
 const Home = () => {
   return (
-    <div className="grid grid-cols-2 gap-4 background img:https://media.istockphoto.com/id/1421629295/photo/inflated-balloon-dollar-sign.jpg?s=1024x1024&w=is&k=20&c=CmkExBo2BWsAhr6ENH1P1TkOyekysQ6z5PIcQpD-Fvs=">
+    <div className="grid grid-cols-1 sn:grid-cols-2 lg:grid-cols-3 gap-4 mx-20 background img:https://media.istockphoto.com/id/1421629295/photo/inflated-balloon-dollar-sign.jpg?s=1024x1024&w=is&k=20&c=CmkExBo2BWsAhr6ENH1P1TkOyekysQ6z5PIcQpD-Fvs=">
       <div className="col-span-1">
-        <h1 className="text-3xl font-bold text-centre text-blue-500 mt=4 mt-5 mx-20 bg=blue-500 border border-gray-300 rounded=1g bg-gray-100">
+        {/* <h1 className="text-3xl font-bold text-centre text-blue-500 mt=4 mt-5 mx-20 bg=blue-500 border border-gray-300 rounded=1g bg-gray-100">
           Welcome to my soft_exp!
         </h1>
         <p className="mt-5 mx-7 mb-10">
           <img src="src/assets/expense.jpg" alt=" width-100%" />
-        </p>
+        </p> */}
       </div>
       <div className="col-span-1">
         <h2 className="text-3xl font-bold text-centre text-blue-500 mt=4 mt-5 mx-20 bg=blue-500">
