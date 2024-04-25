@@ -1,27 +1,34 @@
-
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
-import { Chart as ChartJS } from 'chart.js/auto'
 
 const ExpenseTracker = () => {
-  const [expenses, setExpenses] = useState([
-    // { id: 1, name: 'Rent', amount: 500, category: 'housing' },
-    // { id: 2, name: 'Groceries', amount: 200, category: 'food' },
-    // { id: 3, name: 'Electricity', amount: 300, category: 'utilities' },
-  ]);
-
+  const [expenses, setExpenses] = useState(() => {
+    const storedExpenses = localStorage.getItem('expenses');
+    return storedExpenses ? JSON.parse(storedExpenses) : [];
+  });
   const [newExpense, setNewExpense] = useState({ name: '', amount: 0, category: '' });
+  const [updateExpense, setUpdateExpense] = useState(null);
   const [balance, setBalance] = useState(0);
   const [total, setTotal] = useState(0);
-  const [salary, setSalary] = useState(100000);
-
+  const [salary, setSalary] = useState(() => {
+    const storedSalary = localStorage.getItem('salary');
+    return storedSalary ? parseFloat(storedSalary) : 0;
+  });
+  const [inputSalary, setInputSalary] = useState('');
   const chartRef = useRef(null);
-
-
   useEffect(() => {
     updateChart();
   }, [expenses]);
-
+  useEffect(() => {
+    const remainingBalance = salary - total;
+    setBalance(remainingBalance);
+  }, [total, salary]);
+  useEffect(() => {
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+  }, [expenses]);
+  useEffect(() => {
+    localStorage.setItem('salary', salary.toString());
+  }, [salary]);
   const updateChart = () => {
     const categories = {};
     expenses.forEach((expense) => {
@@ -73,73 +80,66 @@ const ExpenseTracker = () => {
       });
     }
   };
-
-
-
   const handleAddExpense = () => {
     const newExpenses = [...expenses, { id: Date.now(), ...newExpense }];
     setExpenses(newExpenses);
     setNewExpense({ name: '', amount: 0, category: '' });
-
-    // setBalance(balance - newExpense.amount);
-
-
+    updateTotal(newExpenses);
+  };
+  const handleDelete = (id) => {
+    const updatedExpenses = expenses.filter(expense => expense.id !== id);
+    setExpenses(updatedExpenses);
+    updateTotal(updatedExpenses);
+  };
+  const handleUpdateExpense = () => {
+    const updatedExpenses = expenses.map((expense) => {
+      if (expense.id === updateExpense.id) {
+        return { ...updateExpense };
+      }
+      return expense;
+    });
+    setExpenses(updatedExpenses);
+    updateTotal(updatedExpenses);
+    setUpdateExpense(null);
+  };
+  const updateTotal = (expenses) => {
     const totalAmount = expenses.reduce((total, expense) => total + Number(expense.amount), 0);
     setTotal(totalAmount);
-
-    const totalSalary = salary;
-    setSalary(totalSalary);
-
-    const remainingBalance = salary - totalAmount;
-    setBalance(remainingBalance);
-
-    function handleDelete(id) {
-      const newExpense = expenses.filter(expense => expense.id !== index);
-      setExpenses(newExpense);
-
-
-
-      const updatedExpenses = expenses.filter(expense => expense.id !== index);
-      setExpenses(updatedExpenses);
-
-
-
-      const totalAmount = updatedExpenses.reduce((total, expense) => total + Number(expense.amount), 0);
-      setTotal(totalAmount);
-
-
-      const handleCategorizeExpense = (id, category) => {
-        const newExpenses = expenses.map((expense) => {
-          if (expense.id === id) {
-            return { ...expense, category };
-          }
-          return expense;
-
-        });
-        setExpenses(newExpenses);
-
-      };
-    };
-  }
-
-
+  };
+  const handleSetSalary = () => {
+    const newSalary = parseFloat(inputSalary);
+    if (!isNaN(newSalary)) {
+      setSalary(newSalary);
+      setInputSalary('');
+    } else {
+      alert('Please enter a valid salary.');
+    }
+  };
   return (
     <div className="bg-gray-100 p-8 rounded-lg shadow-md">
       <h1 className="text-3xl font-bold text-center text-red-500 mb-7">Expense Tracker</h1>
       <div className="Salary">
         <p className="text-2xl font-bold text-center text-gray-800 mb-2">Salary: ${salary}</p>
-
+        <div className="flex items-center justify-center mb-4">
+          <input
+            className="mr-2 px-3 py-2 border rounded-lg bg-white-250 focus:border-blue-500"
+            type="number"
+            placeholder="Enter Salary"
+            value={inputSalary}
+            onChange={(e) => setInputSalary(e.target.value)}
+          />
+          <button
+            className="bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-white"
+            onClick={handleSetSalary}
+          >
+            Set Salary
+          </button>
+        </div>
       </div>
-
-
       <div className="balance">
         <p className="text-2xl font-bold text-center text-gray-800 mb-2">Balance: ${balance}</p>
       </div>
-
-
       <form onSubmit={(e) => e.preventDefault() || handleAddExpense()}>
-
-      
         <div className="mb-2">
           <label className="block text-white-500 text-sm font-semibold mb-2" htmlFor="">Expense Name</label>
           <input placeholder="Expense Name..." className="w-full px-7 py-2 border rounded-lg bg-white-250 focus:border-blue-800" required type="text" value={newExpense.name} onChange={(e) => setNewExpense({ ...newExpense, name: e.target.value })} />
@@ -148,8 +148,6 @@ const ExpenseTracker = () => {
           <label className="block text-white-500 text-sm font-semibold mb-2" htmlFor="">Expense Amount</label>
           <input placeholder="Expense Amount..." className="w-full px-3 py-2 border rounded-lg bg-white-250 focus:border-blue-500" required type="number" value={newExpense.amount} onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })} />
         </div>
-
-
         <div className="mb-2">
           <label className="block text-white-500 text-sm font-semibold mb-2" htmlFor="">Expense Category</label>
           <select className="w-full px-3 py-2 border rounded-lg bg-white-250 focus:border-blue-500" value={newExpense.category} onChange={(e) => setNewExpense({ ...newExpense, category: e.target.value })}>
@@ -162,8 +160,6 @@ const ExpenseTracker = () => {
             <option value="Personal">Personal</option>
           </select>
         </div>
-
-
         <button className="bg-green-500 text-white-500 font-semibold px-2 py-2 rounded-lg hover:bg-green-500 focus:outline-white" type="submit">Add Expense</button>
       </form>
       <table className="w-full text-left">
@@ -172,7 +168,7 @@ const ExpenseTracker = () => {
             <th className="py-2 px-3 text-lg font-bold">Category</th>
             <th className="py-2 px-5 text-lg font-bold">Name</th>
             <th className="py-2 px-5 text-lg font-bold">Amount</th>
-
+            <th className="py-2 px-5 text-lg font-bold">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -181,34 +177,45 @@ const ExpenseTracker = () => {
               <td className="py-2 px-5 text-lg font-bold">{expense.category}</td>
               <td className="py-2 px-5 text-lg font-bold">{expense.name}</td>
               <td className="py-2 px-5 text-lg font-bold">${expense.amount}</td>
-
               <td className="py-2 px-5 text-lg font-bold">
-
-
-
-
-
+                <button onClick={() => setUpdateExpense(expense)} className='font-serif text-center bg-blue-500 mt-1 ml-1 p-2 px-3 text-gray-100 hover:text-gray-300 border border-gray-300 rounded-lg' >Update Expense</button>
                 <button onClick={() => handleDelete(expense.id)} className='font-serif text-center bg-blue-500 mt-1 ml-1 p-2 px-3 text-gray-100 hover:text-gray-300 border border-gray-300 rounded-lg' >Delete</button>
-
               </td>
             </tr>
           ))}
-        </tbody >
-
+        </tbody>
       </table>
+      {updateExpense && (
+        <form onSubmit={(e) => e.preventDefault() || handleUpdateExpense()}>
+          <div className="mb-2">
+            <label className="block text-white-500 text-sm font-semibold mb-2" htmlFor="">Expense Name</label>
+            <input placeholder="Expense Name..." className="w-full px-7 py-2 border rounded-lg bg-white-250 focus:border-blue-800" required type="text" value={updateExpense.name} onChange={(e) => setUpdateExpense({ ...updateExpense, name: e.target.value })} />
+          </div>
+          <div className="mb-2">
+            <label className="block text-white-500 text-sm font-semibold mb-2" htmlFor="">Expense Amount</label>
+            <input placeholder="Expense Amount..." className="w-full px-3 py-2 border rounded-lg bg-white-250 focus:border-blue-500" required type="number" value={updateExpense.amount} onChange={(e) => setUpdateExpense({ ...updateExpense, amount: e.target.value })} />
+          </div>
+          <div className="mb-2">
+            <label className="block text-white-500 text-sm font-semibold mb-2" htmlFor="">Expense Category</label>
+            <select className="w-full px-3 py-2 border rounded-lg bg-white-250 focus:border-blue-500" value={updateExpense.category} onChange={(e) => setUpdateExpense({ ...updateExpense, category: e.target.value })}>
+              <option value="">Select a category</option>
+              <option value="Housing">Housing</option>
+              <option value="Food">Food</option>
+              <option value="Utilities">Utilities</option>
+              <option value="Transportation">Transportation</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Personal">Personal</option>
+            </select>
+          </div>
+          <button className="bg-blue-500 text-white-500 font-semibold px-2 py-2 rounded-lg hover:bg-blue-600 focus:outline-white" type="submit">Update</button>
+        </form>
+      )}
       <div className="mb-2">
         <label className="block text-white-500 py-2 px-5 text-lg font-bold text-sm font-semibold mb-2 " htmlFor="">Total Amount</label>
-        <input type="text" className="form-control py-2 px-5 text-lg font-bold " placeholder="Enter Total" required disabled
-          value={total} />
+        <input type="text" className="form-control py-2 px-5 text-lg font-bold " placeholder="Enter Total" required disabled value={total} />
       </div>
       <canvas ref={chartRef} width="400" height="200"></canvas>
-
-
     </div>
-
-
   );
 };
-
 export default ExpenseTracker;
-
