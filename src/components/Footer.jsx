@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+
 
 const Footer = () => {
   const [emailAddress, setEmailAddress] = useState('');
@@ -58,15 +61,7 @@ const Footer = () => {
           </ul>
           <p className="text-sm text-gray-500 mt-2">Follow us on social media:</p>
           <div className="flex mt-1">
-            <a href="#" className="text-gray-300 hover:text-gray-100 mr-3">
-              <i className="fab fa-facebook"></i>
-            </a>
-            <a href="#" className="text-gray-300 hover:text-gray-100 mr-3">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" className="text-gray-300 hover:text-gray-100 mr-3">
-              <i className="fab fa-instagram"></i>
-            </a>
+            
           </div>
         </div>
       </div>

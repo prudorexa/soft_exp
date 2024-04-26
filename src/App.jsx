@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 import { useGoogleOneTapLogin } from '@react-oauth/google';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
