@@ -4,7 +4,7 @@ const Navbar = () => {
     return (
         <nav className=' w-full bg-green-700 py-5'>
             <div className='container flex justify-between align-center'>
-                <Link to="/" className='text-white hover:text-gray-300 align-left'>SOFT_EXP</Link>
+                <Link to="/" className='text-white hover:text-gray-300 align-left mx-7'>SOFT_EXP</Link>
                 <ul className='flex  space-x-5'>
                     <li>
                         <Link to="/about" className='text-white hover:text-gray-300'>About</Link>

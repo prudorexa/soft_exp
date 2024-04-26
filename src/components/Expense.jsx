@@ -116,20 +116,20 @@ const ExpenseTracker = () => {
     }
   };
   return (
-    <div className="bg-gray-100 p-8 rounded-lg shadow-md">
+    <div className="bg-gray-100 p-8 mx-9 mt-5 mb-6 rounded-lg shadow-md">
       <h1 className="text-3xl font-bold text-center text-red-500 mb-7">Expense Tracker</h1>
       <div className="Salary">
         <p className="text-2xl font-bold text-center text-gray-800 mb-2">Salary: ${salary}</p>
         <div className="flex items-center justify-center mb-4">
           <input
-            className="mr-2 px-3 py-2 border rounded-lg bg-white-250 focus:border-blue-500"
+            className="mr-2 px-3 py-2  border rounded-lg bg-white-250 focus:border-blue-500"
             type="number"
             placeholder="Enter Salary"
             value={inputSalary}
             onChange={(e) => setInputSalary(e.target.value)}
           />
           <button
-            className="bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-white"
+            className="bg-green-500 text-black font-semibold px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-white"
             onClick={handleSetSalary}
           >
             Set Salary
@@ -141,16 +141,16 @@ const ExpenseTracker = () => {
       </div>
       <form onSubmit={(e) => e.preventDefault() || handleAddExpense()}>
         <div className="mb-2">
-          <label className="block text-white-500 text-sm font-semibold mb-2" htmlFor="">Expense Name</label>
-          <input placeholder="Expense Name..." className="w-full px-7 py-2 border rounded-lg bg-white-250 focus:border-blue-800" required type="text" value={newExpense.name} onChange={(e) => setNewExpense({ ...newExpense, name: e.target.value })} />
+          <label className="block text-white-500 text-sm font-semibold mb-2 ml-6 mr-6 mx-5" htmlFor="">Expense Name</label>
+          <input placeholder="Expense Name..." className="w-full px-7 py-2 mx-7  ml-5 border rounded-lg bg-white-250 focus:border-blue-800" required type="text" value={newExpense.name} onChange={(e) => setNewExpense({ ...newExpense, name: e.target.value })} />
         </div>
         <div className="mb-2">
-          <label className="block text-white-500 text-sm font-semibold mb-2" htmlFor="">Expense Amount</label>
-          <input placeholder="Expense Amount..." className="w-full px-3 py-2 border rounded-lg bg-white-250 focus:border-blue-500" required type="number" value={newExpense.amount} onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })} />
+          <label className="block text-white-500 text-sm font-semibold mb-2 ml-6 mx-5 " htmlFor="">Expense Amount</label>
+          <input placeholder="Expense Amount..." className="w-full px-3 py-2 mx-5 mr-6 border rounded-lg bg-white-250 focus:border-blue-500" required type="number" value={newExpense.amount} onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })} />
         </div>
         <div className="mb-2">
-          <label className="block text-white-500 text-sm font-semibold mb-2" htmlFor="">Expense Category</label>
-          <select className="w-full px-3 py-2 border rounded-lg bg-white-250 focus:border-blue-500" value={newExpense.category} onChange={(e) => setNewExpense({ ...newExpense, category: e.target.value })}>
+          <label className="block text-white-500 text-sm font-semibold mb-2 ml-6 mx-8" htmlFor="">Expense Category</label>
+          <select className="w-full px-3 py-2 mx-7 ml-5 mr-5 border rounded-lg bg-white-250 focus:border-blue-500" value={newExpense.category} onChange={(e) => setNewExpense({ ...newExpense, category: e.target.value })}>
             <option value="">Select a category</option>
             <option value="Housing">Housing</option>
             <option value="Food">Food</option>
@@ -160,9 +160,9 @@ const ExpenseTracker = () => {
             <option value="Personal">Personal</option>
           </select>
         </div>
-        <button className="bg-green-500 text-white-500 font-semibold px-2 py-2 rounded-lg hover:bg-green-500 focus:outline-white" type="submit">Add Expense</button>
+        <button className="bg-green-500 text-black-500 font-semibold px-2 py-2 mx-9 rounded-lg hover:bg-green-500 focus:outline-white" type="submit">Add Expense</button>
       </form>
-      <table className="w-full text-left">
+      <table className="w-full text-left px-2 mx-7 ">
         <thead>
           <tr>
             <th className="py-2 px-3 text-lg font-bold">Category</th>
@@ -178,8 +178,8 @@ const ExpenseTracker = () => {
               <td className="py-2 px-5 text-lg font-bold">{expense.name}</td>
               <td className="py-2 px-5 text-lg font-bold">${expense.amount}</td>
               <td className="py-2 px-5 text-lg font-bold">
-                <button onClick={() => setUpdateExpense(expense)} className='font-serif text-center bg-blue-500 mt-1 ml-1 p-2 px-3 text-gray-100 hover:text-gray-300 border border-gray-300 rounded-lg' >Update Expense</button>
-                <button onClick={() => handleDelete(expense.id)} className='font-serif text-center bg-blue-500 mt-1 ml-1 p-2 px-3 text-gray-100 hover:text-gray-300 border border-gray-300 rounded-lg' >Delete</button>
+                <button onClick={() => setUpdateExpense(expense)} className='font-serif text-center bg-green-500 mt-1 ml-1 p-1 px-2  text-black-100 hover:text-gray-300 border border-gray-300 rounded-lg' >Update </button>
+                <button onClick={() => handleDelete(expense.id)} className='font-serif text-center bg-green-500 mt-1 ml-1 p-1 px-2  text-black-100 hover:text-gray-300 border border-gray-300 rounded-lg' >Delete</button>
               </td>
             </tr>
           ))}
@@ -207,7 +207,7 @@ const ExpenseTracker = () => {
               <option value="Personal">Personal</option>
             </select>
           </div>
-          <button className="bg-blue-500 text-white-500 font-semibold px-2 py-2 rounded-lg hover:bg-blue-600 focus:outline-white" type="submit">Update</button>
+          <button className="bg-green-500 text-black-500 font-semibold px-2 py-2 rounded-lg hover:bg-blue-600 focus:outline-white" type="submit">Update</button>
         </form>
       )}
       <div className="mb-2">
