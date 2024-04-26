@@ -1,13 +1,9 @@
 import { Link } from 'react-router-dom';
 
-const Blog = () => {
-  const data = [
-    {
-      id: 1,
-      title: "How to Use an Expense Tracker for Better Financial Management",
-      description: "Managing personal finances can be challenging, but with the help of an expense tracker, you can gain better control over your spending habits and budget. In this blog post, we'll explore how to effectively use an expense tracker to improve your financial management."
+const Blogs = () => {
 
-    },
+  const data = [
+   
     {
       id: 2,
       title: "1. Set Financial Goals",
@@ -51,27 +47,36 @@ const Blog = () => {
     {
       id: 8,
       title: "Conclusion",
-      image: "src/assets/conclusion.jpg",
       description:"An expense tracker is a valuable tool for improving your financial management skills and achieving your financial goals By tracking your spending, analyzing your habits, and creating a budget, you can take control of your finances and build a brighter financial future"
     }
   ];
+
   return (
+    
+    <>
+    <div className='mx-20 mt-8 bg-white rounded-lg '>
+      <h1 className='text-xl font-bold text-red '>How to Use an Expense Tracker for Better Financial Management</h1>
+      <p className='text-gray-700 mb-4'> Managing personal finances can be challenging, but with the help of an expense tracker, you can gain better control over your spending habits and budget. In this blog post, we'll explore how to effectively use an expense tracker to improve your financial management.</p>
+    </div>
     <div className='grid grid-cols-1 sn:grid-cols-2 lg:grid-cols-3 gap-4 mx-20 mt-8 bg-white rounded-lg shadow-md p-8'>
       {data.map((blog) => (
-        <div key={blog.id} className='border p-4'>
+        <><div key={blog.id} className='border p-4'>
           <div className='text-xl font-bold text-red'>{blog.title}</div>
           <div><img src={blog.image} alt={{ width: 100, height: 200 }} /></div>
           <div className='text-gray-700 mb-4'>{blog.description}</div>
-          <Link to={`/blog/${blog.id}`} state={blog}>
-            <button className="font-serif text-center bg-red-500 mt-4 text-gray-100 hover:text-gray-300 border border-gray-300 rounded-lg">View blog</button>
-          </Link>
 
-        </div> 
+
+        </div>
+        </>
       ))}
     </div>
+    
+    
+    </>
+    
   );
 };
-export default Blog;
+export default Blogs;
 
 
 
