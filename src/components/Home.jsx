@@ -8,8 +8,8 @@ const HomePage = () => {
       <p className="text-lg text-center text-gray-700 mb-8">
         Expense Tracker is a simple and intuitive tool to help you manage your finances efficiently. Track your expenses, set budgets, and achieve your financial goals with ease.
       </p>
-      <div className="flex justify-center mb-8">
-        <img src="src/assets/istockphoto-1806905453-1024x1024.jpg" alt="width-100%" />
+      <div className="flex justify-center mb-8 weight-100">
+        <img src="src/assets/istockphoto-1806905453-1024x1024.jpg" alt="weight=100%" />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="p-4 bg-white rounded-lg shadow-md">

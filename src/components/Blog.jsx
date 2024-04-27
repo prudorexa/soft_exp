@@ -43,17 +43,14 @@ const Blogs = () => {
       title: "6. Track Your Progress",
       image: "src/assets/track progress.webp",
       description:"Regularly monitor your progress towards your financial goals using your expense tracker Celebrate small victories and adjust your budget as needed to stay on track. Over time, you'll build better financial habits and achieve greater financial stability."
-    },
-    {
-      id: 8,
-      title: "Conclusion",
-      description:"An expense tracker is a valuable tool for improving your financial management skills and achieving your financial goals By tracking your spending, analyzing your habits, and creating a budget, you can take control of your finances and build a brighter financial future"
     }
   ];
 
   return (
     
     <>
+   <div>
+   <div></div>
     <div className='mx-20 mt-8 bg-white rounded-lg '>
       <h1 className='text-xl font-bold text-red '>How to Use an Expense Tracker for Better Financial Management</h1>
       <p className='text-gray-700 mb-4'> Managing personal finances can be challenging, but with the help of an expense tracker, you can gain better control over your spending habits and budget. In this blog post, we'll explore how to effectively use an expense tracker to improve your financial management.</p>
@@ -69,7 +66,11 @@ const Blogs = () => {
         </div>
         </>
       ))}
+    </div><div className='mx-20 mt-8 bg-white rounded-lg '>
+    <h1 className='text-xl font-bold text-red '>Conclusion</h1>
+      <p className='text-gray-700 mb-4'> Managing personal finances can be challenging, but with the help of an expense tracker, you can gain better control over your spending habits and budget. In this blog post, we'll explore how to effectively use an expense tracker to improve your financial management.</p>
     </div>
+   </div>
     
     
     </>
