@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+
 const Blogs = () => {
 
   const data = [
@@ -49,7 +50,7 @@ const Blogs = () => {
   return (
     
     <>
-   <div>
+   <div className='card-container'>
    <div></div>
     <div className='mx-20 mt-8 bg-white rounded-lg '>
       <h1 className='text-xl font-bold text-red '>How to Use an Expense Tracker for Better Financial Management</h1>

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
+
 const ExpenseTracker = () => {
   const [expenses, setExpenses] = useState(() => {
     const storedExpenses = localStorage.getItem('expenses');
@@ -16,19 +17,25 @@ const ExpenseTracker = () => {
   });
   const [inputSalary, setInputSalary] = useState('');
   const chartRef = useRef(null);
+
+
   useEffect(() => {
     updateChart();
   }, [expenses]);
+
   useEffect(() => {
     const remainingBalance = salary - total;
     setBalance(remainingBalance);
   }, [total, salary]);
+
   useEffect(() => {
     localStorage.setItem('expenses', JSON.stringify(expenses));
   }, [expenses]);
+
   useEffect(() => {
     localStorage.setItem('salary', salary.toString());
   }, [salary]);
+
   const updateChart = () => {
     const categories = {};
     expenses.forEach((expense) => {
@@ -86,11 +93,13 @@ const ExpenseTracker = () => {
     setNewExpense({ name: '', amount: 0, category: '' });
     updateTotal(newExpenses);
   };
+
   const handleDelete = (id) => {
     const updatedExpenses = expenses.filter(expense => expense.id !== id);
     setExpenses(updatedExpenses);
     updateTotal(updatedExpenses);
   };
+
   const handleUpdateExpense = () => {
     const updatedExpenses = expenses.map((expense) => {
       if (expense.id === updateExpense.id) {
@@ -102,10 +111,13 @@ const ExpenseTracker = () => {
     updateTotal(updatedExpenses);
     setUpdateExpense(null);
   };
+
+
   const updateTotal = (expenses) => {
     const totalAmount = expenses.reduce((total, expense) => total + Number(expense.amount), 0);
     setTotal(totalAmount);
   };
+
   const handleSetSalary = () => {
     const newSalary = parseFloat(inputSalary);
     if (!isNaN(newSalary)) {
@@ -115,10 +127,13 @@ const ExpenseTracker = () => {
       alert('Please enter a valid salary.');
     }
   };
+
+  
   return (
-    <div className="bg-gray-100 p-8 mx-9 mt-5 mb-6 rounded-lg shadow-md">
+ <div className='card-container'>
+     <div className="bg-gray-100 p-8 mx-3 md:mx-9 mt-5 mb-6 rounded-lg shadow-md">
       <h1 className="text-3xl font-bold text-center text-red-500 mb-7">Expense Tracker</h1>
-      <div className="Salary">
+      <div className="Salary mb-4">
         <p className="text-2xl font-bold text-center text-gray-800 mb-2">Salary: ${salary}</p>
         <div className="flex items-center justify-center mb-4">
           <input
@@ -136,7 +151,7 @@ const ExpenseTracker = () => {
           </button>
         </div>
       </div>
-      <div className="balance">
+      <div className="balance mb-4">
         <p className="text-2xl font-bold text-center text-gray-800 mb-2">Balance: ${balance}</p>
       </div>
       <form onSubmit={(e) => e.preventDefault() || handleAddExpense()}>
@@ -148,7 +163,7 @@ const ExpenseTracker = () => {
           <label className="block text-white-500 text-sm font-semibold mb-2 ml-6 mx-5 " htmlFor="">Expense Amount</label>
           <input placeholder="Expense Amount..." className="w-full px-3 py-2 mx-5 mr-6 border rounded-lg bg-white-250 focus:border-blue-500" required type="number" value={newExpense.amount} onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })} />
         </div>
-        <div className="mb-2">
+        <div className=" mb-2">
           <label className="block text-white-500 text-sm font-semibold mb-2 ml-6 mx-8" htmlFor="">Expense Category</label>
           <select className="w-full px-3 py-2 mx-7 ml-5 mr-5 border rounded-lg bg-white-250 focus:border-blue-500" value={newExpense.category} onChange={(e) => setNewExpense({ ...newExpense, category: e.target.value })}>
             <option value="">Select a category</option>
@@ -162,6 +177,7 @@ const ExpenseTracker = () => {
         </div>
         <button className="bg-green-500 text-black-500 font-semibold px-2 py-2 mx-9 rounded-lg hover:bg-green-500 focus:outline-white" type="submit">Add Expense</button>
       </form>
+      <div className='overflow-x-auto'>
       <table className="w-full text-left px-2 mx-7 ">
         <thead>
           <tr>
@@ -185,6 +201,8 @@ const ExpenseTracker = () => {
           ))}
         </tbody>
       </table>
+      </div>
+      
       {updateExpense && (
         <form onSubmit={(e) => e.preventDefault() || handleUpdateExpense()}>
           <div className="mb-2">
@@ -216,6 +234,7 @@ const ExpenseTracker = () => {
       </div>
       <canvas ref={chartRef} width="400" height="200"></canvas>
     </div>
+ </div>
   );
 };
 export default ExpenseTracker;

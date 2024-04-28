@@ -9,6 +9,7 @@ import Blog from './components/Blog';
 import Signin from './components/Signin';
 import Footer from './components/Footer';
 import ExpenseTracker from './components/Expense';
+import './index.css'
 
 
 
