@@ -164,7 +164,7 @@ const ExpenseTracker = () => {
           <input placeholder="Expense Amount..." className="w-full px-3 py-2 mx-5 mr-6 border rounded-lg bg-white-250 focus:border-blue-500" required type="number" value={newExpense.amount} onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })} />
         </div>
         <div className=" mb-2">
-          <label className="block text-white-500 text-sm font-semibold mb-2 ml-6 mx-8" htmlFor="">Expense Category</label>
+          <label className="block text-white-500 text-sm font-bold mb-2 ml-6 mx-8" htmlFor="">Expense Category</label>
           <select className="w-full px-3 py-2 mx-7 ml-5 mr-5 border rounded-lg bg-white-250 focus:border-blue-500" value={newExpense.category} onChange={(e) => setNewExpense({ ...newExpense, category: e.target.value })}>
             <option value="">Select a category</option>
             <option value="Housing">Housing</option>
@@ -177,8 +177,8 @@ const ExpenseTracker = () => {
         </div>
         <button className="bg-green-500 text-black-500 font-semibold px-2 py-2 mx-9 rounded-lg hover:bg-green-500 focus:outline-white" type="submit">Add Expense</button>
       </form>
-      <div className='overflow-x-auto'>
-      <table className="w-full text-left px-2 mx-7 ">
+      <div className='overflow-x-auto text-1g-black font-bold'>
+      <table className="w-full text-left px-2 mx-7">
         <thead>
           <tr>
             <th className="py-2 px-3 text-lg font-bold">Category</th>
