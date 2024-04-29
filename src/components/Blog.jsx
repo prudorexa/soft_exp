@@ -60,7 +60,7 @@ const Blogs = () => {
       {data.map((blog) => (
         <><div key={blog.id} className='border p-4'>
           <div className='text-xl font-bold text-red'>{blog.title}</div>
-          <div><img public={blog.image} alt={{ width: 100, height: 200 }} /></div>
+          <div><img src={blog.image} alt={{ width: 100, height: 200 }} /></div>
           <div className='text-gray-700 mb-4'>{blog.description}</div>
 
 
