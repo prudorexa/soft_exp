@@ -8,7 +8,7 @@ const AboutUs = () => {
       <p className="text-lg text-gray-700 leading-relaxed mb-8">Welcome to Expense Tracker, your personal finance assistant. Our mission is to help you manage your expenses efficiently and make smarter financial decisions.</p>
       <h2 className="text-2xl font-bold mb-4">Meet the Team</h2>
       <div className="flex flex-col md:flex-row items-center mb-8">
-        <img src="src/assets/prudence.jpg" alt="Team Member 1" className="w-24 h-24 rounded-full mb-4 md:mr-8 md:mb-0" />
+        <img src="static/images/prudence.jpg" alt="Team Member 1" className="w-24 h-24 rounded-full mb-4 md:mr-8 md:mb-0" />
         <div className="flex flex-col">
           <h3 className="text-xl font-bold mb-2">Prudence Mathu</h3>
           <p className="text-gray-700 mb-2">Co-Founder & CEO</p>
@@ -17,7 +17,7 @@ const AboutUs = () => {
       </div>
       
       <div className="flex flex-col md:flex-row items-center mb-8">
-        <img src="src/assets/diana.jpg" alt="Team Member 2" className="w-24 h-24 rounded-full mb-4 md:mr-8 md:mb-0 mt-5" />
+        <img src="static/images/diana.jpg" alt="Team Member 2" className="w-24 h-24 rounded-full mb-4 md:mr-8 md:mb-0 mt-5" />
         <div className="flex flex-col">
           <h3 className="text-xl font-bold mb-2">Diana Kara</h3>
           <p className="text-gray-700 mb-2">Co-Founder & CTO</p>
@@ -25,7 +25,7 @@ const AboutUs = () => {
         </div>
       </div>
       <div className="flex flex-col md:flex-row items-center mb-8">
-        <img src=" src/assets/Eliud.jpg" alt="Team Member 3" className="w-24 h-24 rounded-full mb-4 md:mr-8 md:mb-0" />
+        <img src=" static/images/Eliud.jpg" alt="Team Member 3" className="w-24 h-24 rounded-full mb-4 md:mr-8 md:mb-0" />
         <div className="flex flex-col">
           <h3 className="text-xl font-bold mb-2">Eliud Muthui</h3>
           <p className="text-gray-700 mb-2">Co-Founder & Director</p>
@@ -33,7 +33,7 @@ const AboutUs = () => {
         </div>
         </div>
       <div className="flex flex-col md:flex-row items-center mb-8">
-        <img src="src/assets/Lydia.jpg" alt="Team Member 4" className="w-24 h-24 rounded-full mb-4 md:mr-8 md:mb-0" />
+        <img src="static/images/Lydia.jpg" alt="Team Member 4" className="w-24 h-24 rounded-full mb-4 md:mr-8 md:mb-0" />
         <div className="flex flex-col">
           <h3 className="text-xl font-bold mb-2">Lydia Gathoni</h3>
           <p className="text-gray-700 mb-2">Co-Founder & Producer</p>
