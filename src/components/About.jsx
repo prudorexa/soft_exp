@@ -29,7 +29,7 @@ const AboutUs = () => {
         <div className="flex flex-col">
           <h3 className="text-xl font-bold mb-2">Eliud Muthui</h3>
           <p className="text-gray-700 mb-2">Co-Founder & Director</p>
-          <p className="text-gray-700">Prudence is passionate about personal finance and technology. With years of experience in software development, she leads our team with innovation and dedication.</p>
+          <p className="text-gray-700">Eliud is skilled in making sure every work is done according to the position in which one lies . With years of experience in cyber security, he leads our team with success and prosperity.</p>
         </div>
         </div>
       <div className="flex flex-col md:flex-row items-center mb-8">
@@ -37,7 +37,7 @@ const AboutUs = () => {
         <div className="flex flex-col">
           <h3 className="text-xl font-bold mb-2">Lydia Gathoni</h3>
           <p className="text-gray-700 mb-2">Co-Founder & Producer</p>
-          <p className="text-gray-700">Lydia is passionate about personal finance and technology. With years of experience in software development, she leads our team with innovation and dedication.</p>
+          <p className="text-gray-700">Lydia is well organized producer who ensures that all runs smoothly in the company. With years of experience in software development, she leads our team with innovation and dedication.</p>
         </div>
     </div>
     </div>
