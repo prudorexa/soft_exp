@@ -9,7 +9,7 @@ const HomePage = () => {
         Expense Tracker is a simple and intuitive tool to help you manage your finances efficiently. Track your expenses, set budgets, and achieve your financial goals with ease.
       </p>
       <div className="flex justify-center mb-8 weight-100">
-        <img src="src/assets/istockphoto-1806905453-1024x1024.jpg" alt="weight=100%" />
+        <img src="static/images/istockphoto-1806905453-1024x1024.jpg" alt="weight=100%" />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="p-4 bg-white rounded-lg shadow-md">
