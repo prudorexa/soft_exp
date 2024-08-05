@@ -9,23 +9,25 @@ import Blog from './components/Blog';
 import Signin from './components/Signin';
 import Footer from './components/Footer';
 import ExpenseTracker from './components/Expense';
+// import Auth0ProviderWithHistory from './components/Auth0ProviderWithHistory';
 import './index.css'
 
 
-
 const App = () => {
-  return(
+  return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/about' element={<About />}/>
-        <Route path='/expense' element={<ExpenseTracker />}/>
-        <Route path='/blog' element={<Blog />}/>
-        {/* <Route path='/blog/:blogId' element={<Blog />}/>  */}
-        <Route path='/contact' element={<Contact />}/>
-        <Route path='/Signin' element={<Signin />}/>
-      </Routes>
+      <Auth0ProviderWithHistory>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/expense' element={<ExpenseTracker />} />
+          <Route path='/blog' element={<Blog />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/Signin' element={<Signin />} />
+        </Routes>
+      </Auth0ProviderWithHistory>
+
       <Footer />
     </Router>
   )
